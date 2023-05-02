@@ -161,3 +161,8 @@ $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ
 ```
 It took 29 minutes to process stocks/etfs starting with letters G and I (GI). JL took the least amount of time - 17 minutes. And everything else was in between. Since all ran in parallel - 29 minutes was all it took to process them all.
 The processor had 12 cores - I kept starting a new bin/spark-submit in a new tab untill CPU was at about 100% with no processing power left. Therefore 10 tabs.
+# Apache Spark
+I used Apache Spark to process data
+It required installing Java
+# Output
+All output files are stored here - ...
