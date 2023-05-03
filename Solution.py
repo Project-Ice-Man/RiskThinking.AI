@@ -30,7 +30,7 @@ schema = StructType([ StructField('Date',     StringType(), True),
                       StructField('Low',       FloatType(), True),
                       StructField('Close',     FloatType(), True),
                       StructField('Adj Close', FloatType(), True),
-                      StructField('Volume',  IntegerType(), True) ])
+                      StructField('Volume',    FloatType(), True) ])
 
 start_time = time.time()
 
