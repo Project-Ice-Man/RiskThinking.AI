@@ -9,7 +9,28 @@ import pandas as pd, numpy
 print('\n--- %s seconds ---' % (time.time() - start_time))
 ```
 # How it works
-I could have spawned 10 processes via a shell script, but to see a little bit better what was going on, I just opened 10 shell tabs and submitted 10 spark applications like this:
+A bash script starts 10 processes in parallel (to fill up CPU's capacity to about 100%):
+```bash
+cd /Volumes/Mac/Code/RiskThinking.AI/spark-3.4.0-bin-hadoop3
+
+Solution="/Volumes/Mac/Code/RiskThinking.AI/Solution.py"
+
+Logs="/Volumes/Windows/Win/Code/RiskThinking.AI/Logs"
+
+mkdir /Volumes/Windows/Win/Code/RiskThinking.AI/Logs
+
+range="AB"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="CD"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="EF"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="GI"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="JL"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="MN"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="OQ"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="RS"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="TU"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+range="VZ"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
+```
+or in a more readable form:
 ```
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 32 mins
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py CD
@@ -24,7 +45,7 @@ $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ
 ```
 It took 32 minutes to process stocks/etfs starting with letters A and B (AB). JL took the least amount of time - 18 minutes. And everything else was in between. Since all ran in parallel - 32 minutes was all it took to process them all.  
   
-The processor had 12 cores - I kept starting a new `bin/spark-submit` in a new tab untill CPU was at about 100% with no processing power left. Therefore 10 tabs. By seeing how much time it took to process stocks/etfs starting with the same letter, I figured how to group them into 10 groups more or less evenly.  
+From previous tests I figured how to group them into 10 groups more or less evenly.  
   
 Reading (all the original stocks/etfs) was done from one SSD, writing was done to another SSD.
 # Code Outline
