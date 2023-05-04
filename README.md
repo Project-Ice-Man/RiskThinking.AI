@@ -218,7 +218,7 @@ RiskThinking.AI
   Problem 3
     A
     AA
-      X_test.pkl <-- what I whought I needed to save (I may have gotten it wrong, sorry if I did)
+      X_test.pkl <-- what I thought I needed to save (I may have gotten it wrong, sorry if I did)
       X_train.pkl
       data.pkl
       y_pred.npy
