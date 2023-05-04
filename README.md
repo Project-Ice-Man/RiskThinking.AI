@@ -148,6 +148,8 @@ print('\n\n--- %s seconds ---' % (time.time() - start_time))
 ```
 # How it works
 A bash script starts 10 processes in parallel (to fill up CPU's capacity to about 100%):
+`sergei_kachanov spark-3.4.0-bin-hadoop3 $: bash /Volumes/Mac/Code/RiskThinking.AI/Run.sh`  
+  
 ```bash
 cd /Volumes/Mac/Code/RiskThinking.AI/spark-3.4.0-bin-hadoop3
 
