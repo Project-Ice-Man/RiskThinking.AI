@@ -1,5 +1,5 @@
 # Intro
-I'm more familiar with solving problems 1-2 than 3-4. Therefore in Solution.py I was able to implement 1 and 2 well (hopefully). For 3, I only plugged in the (nice) code that was provided and saved to disk as much details as I thought was required. I did not implement 4 at all, sorry about that.
+Hi there, I'm more familiar with solving problems like 1-2 than 3-4. Therefore in `Solution.py` I was able to implement 1 and 2 well (hopefully). For 3, I only plugged in the (nice) code that was provided and saved to disk as much details as I thought was required. I did not implement 4 at all, sorry about that.
 # Solution.py
 How it works will be described right after
 ```python
