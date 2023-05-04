@@ -12,7 +12,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 sc = SparkContext('local'); sc.setLogLevel('ERROR')
-spark = SparkSession(sc)
+spark = SparkSession(sc);   spark.conf.set('mapreduce.fileoutputcommitter.marksuccessfuljobs', 'false') # to not write _SUCCESS
 
 # read
 input_path = '/Volumes/Mac/Code/RiskThinking.AI'
@@ -58,7 +58,7 @@ for svm in symbols_valid_meta.collect():
     pct = '{:.3%}'.format(count/count_max) # percentage of processed files
     prg = ' '.join([ pct.rjust(8,' '),
                   folder.ljust(6,' '),
-                  Symbol.ljust(4,' '),
+                  Symbol.ljust(5,' '),
                   SecurityName     ]); print('\r', (prg[:98] + '..') if len(prg) > 100 else prg, end='') # print progress
     try:
         # Problem 1 ------------------------------------------------------------
@@ -126,6 +126,7 @@ for svm in symbols_valid_meta.collect():
         errors += [[Symbol, f'{x}']]
 
     count += 1
+    # if count > 10: break
 
 if len(errors):
     print('\n')
@@ -138,4 +139,4 @@ if len(errors):
 
     print(f'The total number of errors for {sys.argv[1]}: {df.count()}')
 
-print('\n--- %s seconds ---' % (time.time() - start_time))
+print('\n\n--- %s seconds ---' % (time.time() - start_time))
