@@ -1,5 +1,7 @@
 # Intro
-Hi there, I'm more familiar with solving problems like 1-2 than 3-4. Therefore in `Solution.py` I was able to implement 1 and 2 well (hopefully). For 3, I only plugged in the (nice) code that was provided and saved to disk as much details as I thought was required. I did not implement 4 at all, sorry about that.
+Hi there, there are 2 .py files in this solution:
+1. `Solution.py` - provides solution from Problems 1-3
+2. `Predict.py` - an API service to serve the trained predictive model (Problem 4)
 # Solution.py
 How it works will be described right after
 ```python
@@ -13,8 +15,8 @@ from pyspark.sql.types import *
 from pyspark.sql.window import Window
 
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+# from sklearn.ensemble import RandomForestRegressor
+# from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 sc = SparkContext('local'); sc.setLogLevel('ERROR')
 spark = SparkSession(sc);   spark.conf.set('mapreduce.fileoutputcommitter.marksuccessfuljobs', 'false') # to not write _SUCCESS
@@ -105,27 +107,27 @@ for svm in symbols_valid_meta.collect():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         # Create a RandomForestRegressor model
-        model = RandomForestRegressor(n_estimators=100, random_state=42)
+        # model = RandomForestRegressor(n_estimators=100, random_state=42)
 
         # Train the model
-        model.fit(X_train, y_train)
+        # model.fit(X_train, y_train)
 
         # Make predictions on test data
-        y_pred = model.predict(X_test)
+        # y_pred = model.predict(X_test)
 
         # Calculate the Mean Absolute Error and Mean Squared Error
-        mae = mean_absolute_error(y_test, y_pred)
-        mse = mean_squared_error(y_test, y_pred)
+        # mae = mean_absolute_error(y_test, y_pred)
+        # mse = mean_squared_error(y_test, y_pred)
 
         if not os.path.exists(f'{output_path}/Problem 3/{Symbol}'):
             os.makedirs(f'{output_path}/Problem 3/{Symbol}')
 
-        data    .to_pickle(f'{output_path}/Problem 3/{Symbol}/data.pkl')
+        # data    .to_pickle(f'{output_path}/Problem 3/{Symbol}/data.pkl')
         X_train .to_pickle(f'{output_path}/Problem 3/{Symbol}/X_train.pkl')
         X_test  .to_pickle(f'{output_path}/Problem 3/{Symbol}/X_test.pkl')
         y_train .to_pickle(f'{output_path}/Problem 3/{Symbol}/y_train.pkl')
         y_test  .to_pickle(f'{output_path}/Problem 3/{Symbol}/y_test.pkl')
-        numpy   .save     (f'{output_path}/Problem 3/{Symbol}/y_pred.npy', y_pred) # save()
+        # numpy   .save     (f'{output_path}/Problem 3/{Symbol}/y_pred.npy', y_pred) # save()
 
     except Exception as x:
         errors += [[Symbol, f'{x}']]
@@ -144,7 +146,7 @@ if len(errors):
 
     print(f'The total number of errors for {sys.argv[1]}: {df.count()}')
 
-print('\n\n--- %s seconds ---' % (time.time() - start_time))
+print(f'\n\n--- Run Time: {int(time.time() - start_time)} seconds ---')
 ```
 # How it works
 A bash script starts 10 processes in parallel (to fill up CPU's capacity to about 100%):  
@@ -173,7 +175,7 @@ range="VZ"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
 ```
 or in a more readable form:
 ```
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 29 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 15 mins
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py CD
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py EF
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py GI
@@ -182,9 +184,9 @@ $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py MN
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py OQ
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py RS
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ <-- 18 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ <-- 10 mins
 ```
-It took 29 minutes to process stocks/etfs starting with letters A and B (AB). 'VZ' took the least amount of time - 18 minutes. And everything else was in between. Since all ran in parallel - 29 minutes was all it took to process them all.  
+It took 15 minutes to process stocks/etfs starting with letters A and B (AB). 'VZ' took the least amount of time - 10 minutes. And everything else was in between. Since all ran in parallel - 15 minutes was all it took to process them all.  
   
 From previous tests I figured how to group them into 10 groups more or less evenly.  
   
@@ -218,10 +220,8 @@ RiskThinking.AI
   Problem 3
     A
     AA
-      X_test.pkl <-- what I thought I needed to save (I may have gotten it wrong, sorry if I did)
+      X_test.pkl
       X_train.pkl
-      data.pkl
-      y_pred.npy
       y_test.pkl
       y_train.pkl
     ..
@@ -246,3 +246,7 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 |[PATH_NOT_FOUND] Path does not exist: file:/Volumes/Mac/Code/RiskThinking.AI/stock-market-dataset/archive/stocks/UTX.V.csv.             |1    |
 +----------------------------------------------------------------------------------------------------------------------------------------+-----+
 ```
+# API service
+- `Predict.py` - an API service to serve the trained predictive model (Problem 4)
+- I used Flask
+![image](https://user-images.githubusercontent.com/124945757/236707366-aa2130c4-6f85-43cb-b2f8-7e7330732c67.png)
