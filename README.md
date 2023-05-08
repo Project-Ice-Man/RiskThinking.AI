@@ -1,6 +1,6 @@
 # Intro
 There are 2 python files in this solution:
-1. `Solution.py` - provides solution from Problems 1-3
+1. `Solution.py` - provides solution for Problems 1-3
 2. `Predict.py` - an API service to serve the trained predictive model (Problem 4)
 # Solution.py
 How it works will be described right after
