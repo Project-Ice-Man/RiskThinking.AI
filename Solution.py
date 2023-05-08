@@ -8,8 +8,8 @@ from pyspark.sql.types import *
 from pyspark.sql.window import Window
 
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+# from sklearn.ensemble import RandomForestRegressor
+# from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 sc = SparkContext('local'); sc.setLogLevel('ERROR')
 spark = SparkSession(sc);   spark.conf.set('mapreduce.fileoutputcommitter.marksuccessfuljobs', 'false') # to not write _SUCCESS
@@ -100,27 +100,27 @@ for svm in symbols_valid_meta.collect():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         # Create a RandomForestRegressor model
-        model = RandomForestRegressor(n_estimators=100, random_state=42)
+        # model = RandomForestRegressor(n_estimators=100, random_state=42)
 
         # Train the model
-        model.fit(X_train, y_train)
+        # model.fit(X_train, y_train)
 
         # Make predictions on test data
-        y_pred = model.predict(X_test)
+        # y_pred = model.predict(X_test)
 
         # Calculate the Mean Absolute Error and Mean Squared Error
-        mae = mean_absolute_error(y_test, y_pred)
-        mse = mean_squared_error(y_test, y_pred)
+        # mae = mean_absolute_error(y_test, y_pred)
+        # mse = mean_squared_error(y_test, y_pred)
 
         if not os.path.exists(f'{output_path}/Problem 3/{Symbol}'):
             os.makedirs(f'{output_path}/Problem 3/{Symbol}')
 
-        data    .to_pickle(f'{output_path}/Problem 3/{Symbol}/data.pkl')
+        # data    .to_pickle(f'{output_path}/Problem 3/{Symbol}/data.pkl')
         X_train .to_pickle(f'{output_path}/Problem 3/{Symbol}/X_train.pkl')
         X_test  .to_pickle(f'{output_path}/Problem 3/{Symbol}/X_test.pkl')
         y_train .to_pickle(f'{output_path}/Problem 3/{Symbol}/y_train.pkl')
         y_test  .to_pickle(f'{output_path}/Problem 3/{Symbol}/y_test.pkl')
-        numpy   .save     (f'{output_path}/Problem 3/{Symbol}/y_pred.npy', y_pred) # save()
+        # numpy   .save     (f'{output_path}/Problem 3/{Symbol}/y_pred.npy', y_pred) # save()
 
     except Exception as x:
         errors += [[Symbol, f'{x}']]
@@ -139,4 +139,4 @@ if len(errors):
 
     print(f'The total number of errors for {sys.argv[1]}: {df.count()}')
 
-print('\n\n--- %s seconds ---' % (time.time() - start_time))
+print(f'\n\n--- Run Time: {int(time.time() - start_time)} seconds ---')
