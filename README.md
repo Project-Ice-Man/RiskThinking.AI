@@ -319,4 +319,4 @@ if __name__ == "__main__":
 - A GET request to this service looked like this: `http://127.0.0.1:5000/predict?Symbol=COST&vol_moving_avg=1.312480E6&adj_close_rolling_med=6.812650`
 - It accepted 3 parameters: Symbol, vol_moving_avg, adj_close_rolling_med
 - The output was a HTML page that looked like this:
-![image](https://user-images.githubusercontent.com/124945757/236707366-aa2130c4-6f85-43cb-b2f8-7e7330732c67.png)
+![image](https://user-images.githubusercontent.com/124945757/236733573-af8d3f89-2c1d-4e35-b0f0-2d486a27a182.png)
