@@ -1,5 +1,5 @@
 # Intro
-Hi there, there are 2 .py files in this solution:
+There are 2 python files in this solution:
 1. `Solution.py` - provides solution from Problems 1-3
 2. `Predict.py` - an API service to serve the trained predictive model (Problem 4)
 # Solution.py
@@ -152,7 +152,7 @@ print(f'\n\n--- Run Time: {int(time.time() - start_time)} seconds ---')
 A bash script starts 10 processes in parallel (to fill up CPU's capacity to about 100%):  
 
 `sergei_kachanov spark-3.4.0-bin-hadoop3 $: bash /Volumes/Mac/Code/RiskThinking.AI/Run.sh`  
-  
+which looks like this:
 ```bash
 cd /Volumes/Mac/Code/RiskThinking.AI/spark-3.4.0-bin-hadoop3
 
@@ -192,7 +192,7 @@ From previous tests I figured how to group them into 10 groups more or less even
   
 Reading (all the original stocks/etfs) was done from one SSD, writing was done to another SSD.
 # Code Outline
-I read `symbols_valid_meta.csv` line by line in a loop and for each stock/etf pefrormed the 3 required steps
+I read `symbols_valid_meta.csv` line by line in a loop and for each stock/etf pefrormed the 3 required steps.
 # Apache Spark
 I used Apache Spark to process data. It required installing Java. The rest could be easily installed via `pip install`
 # Output
@@ -247,6 +247,7 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 +----------------------------------------------------------------------------------------------------------------------------------------+-----+
 ```
 # API service - Predict.py
+How it works will be described right after
 ```python
 from flask import Flask, request
 
@@ -314,5 +315,8 @@ def predict():
 if __name__ == "__main__":
     app.run()
 ```
-And a screenshot
+- Flask, which is a web application framework, was used to run the API
+- A GET request to this service looked like this: `http://127.0.0.1:5000/predict?Symbol=COST&vol_moving_avg=1.312480E6&adj_close_rolling_med=6.812650`
+- It accepted 3 parameters: Symbol, vol_moving_avg, adj_close_rolling_med
+- The output was a HTML page that looked like this:
 ![image](https://user-images.githubusercontent.com/124945757/236707366-aa2130c4-6f85-43cb-b2f8-7e7330732c67.png)
