@@ -175,7 +175,7 @@ range="VZ"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
 ```
 or in a more readable form:
 ```
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 15 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 16 mins
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py CD
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py EF
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py GI
@@ -183,10 +183,10 @@ $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py JL
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py MN
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py OQ
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py RS
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ <-- 10 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU <-- 10 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ
 ```
-It took 15 minutes to process stocks/etfs starting with letters A and B (AB). 'VZ' took the least amount of time - 10 minutes. And everything else was in between. Since all ran in parallel - 15 minutes was all it took to process them all.  
+It took 16 minutes to process stocks/etfs starting with letters A and B (AB). 'TU' took the least amount of time - 10 minutes. And everything else was in between. Since all ran in parallel - 16 minutes was all it took to process them all.  
   
 From previous tests I figured how to group them into 10 groups more or less evenly.  
   
