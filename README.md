@@ -105,15 +105,8 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 ```
 # API service - Predict.py
 - This is where the service is hosted:  
-`http://projecticeman.pythonanywhere.com/predict?Symbol=TSLA&vol_moving_avg=6.601057E6&adj_close_rolling_med=252.994334`
+`http://projecticeman.pythonanywhere.com/predict?Symbol=TSLA&vol_moving_avg=6.601057E6&adj_close_rolling_med=252.994334`  
+![image](https://user-images.githubusercontent.com/124945757/236939926-c2760dfd-8b74-4276-9fa6-69787ebeca54.png)
 - Flask, which is a web application framework, was used to host the API
-- GET request to this service may look like this:  
-`http://127.0.0.1:5000/predict?Symbol=COST&vol_moving_avg=1.312480E6&adj_close_rolling_med=6.812650`
-- It accepted 3 parameters: Symbol, vol_moving_avg, adj_close_rolling_med
+- `/predict` accepted 3 parameters: Symbol, vol_moving_avg, adj_close_rolling_med
 - Folder /Problem 3/ uncompressed is 174 GB. Where I host the API has disk space limit of 512 MB. Therefore I only serve 3: Apple (AAPL), Costco (COST) and Tesla (TSLA). I can manually add some mere spesific ones that may be of inrest, if disk space permits
-- The output was a HTML page that looked like this:
-![image](https://user-images.githubusercontent.com/124945757/236733573-af8d3f89-2c1d-4e35-b0f0-2d486a27a182.png)
-  
-A cleaer look of the API service result:  
-![image](https://user-images.githubusercontent.com/124945757/236739828-2c4229c4-8c6b-40eb-b24f-ecd0c8df7e1c.png)
-
