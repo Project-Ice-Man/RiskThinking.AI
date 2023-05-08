@@ -5,7 +5,7 @@ There are 2 python files in this solution:
 # Solution.py
 A bash script starts 10 processes in parallel (to fill up CPU's capacity to about 100%):  
   
-`sergei_kachanov spark-3.4.0-bin-hadoop3 $: bash /Volumes/Mac/Code/RiskThinking.AI/Run.sh`  
+`$: bash /Volumes/Mac/Code/RiskThinking.AI/Run.sh`  
   
 which looks like this:  
 
@@ -31,7 +31,7 @@ range="VZ"; bin/spark-submit ${Solution} ${range} > ${Logs}/${range}.log 2>&1 &
 ```
 or in a more readable form:
 ```
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 16 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB <-- 42 mins
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py CD
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py EF
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py GI
@@ -39,10 +39,10 @@ $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py JL
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py MN
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py OQ
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py RS
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU <-- 10 mins
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ <-- 27 mins
 ```
-It took 16 minutes to process stocks/etfs starting with letters A and B (AB). 'TU' took the least amount of time - 10 minutes. And everything else was in between. Since all ran in parallel - 16 minutes was all it took to process them all.  
+It took 42 minutes to process stocks/etfs starting with letters A and B (AB). 'TU' took the least amount of time - 27 minutes. And everything else was in between. Since all ran in parallel - 42 minutes was all it took to process them all.  
   
 From previous tests I figured how to group them into 10 groups more or less evenly.  
   
@@ -77,7 +77,7 @@ RiskThinking.AI
   Problem 3
     A
     AA
-      data.pkl <-- sarialized trained model RandomForestRegressor
+      data.pkl <-- serialized trained model RandomForestRegressor
       error.json <-- mean_absolute_error and mean_squared_error
     ..
 ```
@@ -110,5 +110,5 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
   
 ![image](https://user-images.githubusercontent.com/124945757/236939926-c2760dfd-8b74-4276-9fa6-69787ebeca54.png)
 - Flask, which is a web application framework, was used to host the API
-- `/predict` accepted 3 parameters: Symbol, vol_moving_avg, adj_close_rolling_med
-- Folder /Problem 3/ uncompressed is 174 GB. Where I host the API has disk space limit of 512 MB. Therefore I only serve 3: Apple (AAPL), Costco (COST) and Tesla (TSLA). I can manually add some mere spesific ones that may be of inrest, if disk space permits
+- `/predict` accepted 3 parameters: __Symbol__, __vol_moving_avg__, __adj_close_rolling_med__
+- Folder /Problem 3/ uncompressed is 174 GB. Where I host the API has disk space limit of 512 MB. Therefore I only serve 4: Apple (__AAPL__), IBM (__IBM__) Costco (__COST__) and Tesla (__TSLA__). I can manually add some mere spesific ones that may be of inrest, if disk space permits
