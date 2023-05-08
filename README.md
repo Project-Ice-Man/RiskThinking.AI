@@ -315,8 +315,9 @@ def predict():
 if __name__ == "__main__":
     app.run()
 ```
-- Flask, which is a web application framework, was used to run the API
-- A GET request to this service looked like this: `http://127.0.0.1:5000/predict?Symbol=COST&vol_moving_avg=1.312480E6&adj_close_rolling_med=6.812650`
+- Flask, which is a web application framework, was used to host the API
+- GET request to this service may look like this:
+`http://127.0.0.1:5000/predict?Symbol=COST&vol_moving_avg=1.312480E6&adj_close_rolling_med=6.812650`
 - It accepted 3 parameters: Symbol, vol_moving_avg, adj_close_rolling_med
 - The output was a HTML page that looked like this:
 ![image](https://user-images.githubusercontent.com/124945757/236733573-af8d3f89-2c1d-4e35-b0f0-2d486a27a182.png)
