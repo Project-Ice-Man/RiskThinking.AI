@@ -54,7 +54,7 @@ I used Apache Spark to process data. It required installing Java. The rest could
 # Output
 - All output files are stored here - https://drive.google.com/drive/folders/1iTgZZ5kXTOiIKTtWwk39IOYFm3-qYszD?usp=sharing
 - Folders Problem 1-2 have been zipped.
-- Folder /Problem 3/ is massive: 174 GB unzipped, 100 GB zipped - there's only 15 GB available on Google Drive. Therefore I only store some, but not all. I can add ones of spesific interest.
+- Folder /Problem 3/ is massive: 174 GB unzipped (takes more than 1h to zip) - there's only 15 GB available on Google Drive. Therefore I only store some, but not all. I can add ones of spesific interest.
 The cpmplete file structure looks like this:
 ```
 RiskThinking.AI
