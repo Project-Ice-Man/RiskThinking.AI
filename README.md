@@ -52,8 +52,9 @@ I read `symbols_valid_meta.csv` line by line in a loop and for each stock/etf pe
 # Apache Spark
 I used Apache Spark to process data. It required installing Java. The rest could be easily installed via `pip install`
 # Output
-All output files are stored here - https://drive.google.com/drive/folders/1iTgZZ5kXTOiIKTtWwk39IOYFm3-qYszD?usp=sharing  
-Folders Problem 1-3 have been zipped.  
+- All output files are stored here - https://drive.google.com/drive/folders/1iTgZZ5kXTOiIKTtWwk39IOYFm3-qYszD?usp=sharing
+- Folders Problem 1-2 have been zipped.
+- Folder /Problem 3/ is massive: 174 GB unzipped, 100 GB zipped - there's only 15 GB available on Google Drive. Therefore I only store some, but not all. I can add ones of spesific interest.
 The cpmplete file structure looks like this:
 ```
 RiskThinking.AI
