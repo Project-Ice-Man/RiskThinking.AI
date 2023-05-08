@@ -104,6 +104,8 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 +----------------------------------------------------------------------------------------------------------------------------------------+-----+
 ```
 # API service - Predict.py
+- This is where the service is hosted:  
+`http://projecticeman.pythonanywhere.com/predict?Symbol=TSLA&vol_moving_avg=6.601057E6&adj_close_rolling_med=252.994334`
 - Flask, which is a web application framework, was used to host the API
 - GET request to this service may look like this:  
 `http://127.0.0.1:5000/predict?Symbol=COST&vol_moving_avg=1.312480E6&adj_close_rolling_med=6.812650`
