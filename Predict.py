@@ -12,6 +12,7 @@ def predict():
 
         # read
         read_path = '/Volumes/Windows/Win/Code/RiskThinking.AI'
+        # read_path = '/home/projecticeman'
 
         # query string | parameters
         args = request.args
