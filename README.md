@@ -106,7 +106,7 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 ```
 # API service - Predict.py
 - This is where the service is hosted:  
-`http://projecticeman.pythonanywhere.com/predict?Symbol=TSLA&vol_moving_avg=6.601057E6&adj_close_rolling_med=252.994334`  
+`http://projecticeman.pythonanywhere.com/predict?Symbol=IBM&vol_moving_avg=6.216773E6&adj_close_rolling_med=6.979269`  
   
 ![image](https://user-images.githubusercontent.com/124945757/236939926-c2760dfd-8b74-4276-9fa6-69787ebeca54.png)
 - Flask, which is a web application framework, was used to host the API
