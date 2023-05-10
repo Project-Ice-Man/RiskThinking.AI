@@ -39,10 +39,10 @@ $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py JL
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py MN
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py OQ
 $: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py RS
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU
-$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ <-- 27 mins
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py TU <-- this one
+$: bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py VZ <-- or this one are usually the fastest ones and take about 26 mins
 ```
-It took 42 minutes to process stocks/etfs starting with letters A and B (AB). 'VZ' took the least amount of time - 27 minutes. And everything else was in between. Since all ran in parallel - 42 minutes was all it took to process them all.  
+It took 42 minutes to process stocks/etfs starting with letters A and B (AB). 'TU' or 'VZ' took the least amount of time - 26 minutes. And everything else was in between. Since all ran in parallel - 42 minutes was all it took to process them all.  
   
 From previous tests I figured how to group them into 10 groups more or less evenly.  
   
