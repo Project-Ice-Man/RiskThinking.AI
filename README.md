@@ -112,5 +112,9 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 - Flask, which is a web application framework, was used to host the API
 - `/predict` accepted 3 parameters: __Symbol__, __vol_moving_avg__, __adj_close_rolling_med__
 - Folder /Problem 3/ uncompressed is 174 GB. Where I host the API it has disk space limit of 512 MB. Therefore I only serve 4: Apple (__AAPL__), IBM (__IBM__) Costco (__COST__) and Tesla (__TSLA__). I can manually add some mere spesific ones that may be of interest, if disk space permits
-# Limitations
-Folder /Problem 3/ is 174 GB and takes 1 hour to zip, not enough room on Google Drive or API host to put. Therefore, on the API host (512 MB limit) I only put 4: Costco, IBM, Tesla and Apple. On Google Drive I put the 4, plus a few more. I can add more to either, if some are of particular interest.
+# Limitations and Approach
+Due to limitations of personal computer, it did not seem possible to train `RandomForestRegressor()` on the entire dataset of more than 28 million rows. For example, training the model on only 30% of rows took about 22 minutes. Trying to serialize it caused a crush and left an incomplete serialized file of about 60 GB. In short: too small of a percentage of rows to train on; and too big of a resulting file when serialized.  
+  
+Therefore I took the approach of training the model per Symbol and serializing many individual models in /Problem 3/.  
+  
+Folder /Problem 3/ is 174 GB and takes 1 hour to zip, not enough room on Google Drive or API host to put on. Therefore, on the API host (512 MB limit) I only put 4: Costco, IBM, Tesla and Apple. On Google Drive I put the 4, plus a few more. I can add more to either, if some are of particular interest.
