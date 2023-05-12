@@ -108,7 +108,8 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 - This is where the service is hosted:  
 `http://projecticeman.pythonanywhere.com/predict?Symbol=IBM&vol_moving_avg=6.216773E6&adj_close_rolling_med=6.979269`  
   
-![image](https://user-images.githubusercontent.com/124945757/236939926-c2760dfd-8b74-4276-9fa6-69787ebeca54.png)
+![image](https://github.com/Project-Ice-Man/RiskThinking.AI/assets/124945757/126527e2-318f-4f65-ba69-ce8c6de1a654)
+  
 - Flask, which is a web application framework, was used to host the API
 - `/predict` accepted 3 parameters: __Symbol__, __vol_moving_avg__, __adj_close_rolling_med__
 - Folder /Problem 3/ uncompressed is 164G. Where I host the API it has disk space limit of 512 MB. Therefore I only serve 4: Apple (__AAPL__), IBM (__IBM__) Costco (__COST__) and Tesla (__TSLA__). I can manually add some more spesific ones that may be of interest, if disk space permits.
