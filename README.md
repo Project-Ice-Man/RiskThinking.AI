@@ -55,7 +55,7 @@ I used Apache Spark to process data. It required installing Java. The rest could
 - All output files are stored here - https://drive.google.com/drive/folders/1iTgZZ5kXTOiIKTtWwk39IOYFm3-qYszD?usp=sharing
 - Folders Problem 1-2 have been zipped.
 - Folder /Problem 3/ is massive: 174 GB unzipped (takes more than 1h to zip) - there's only 15 GB available on Google Drive. Therefore I only store some, but not all. I can add ones of spesific interest.
-The cpmplete file structure looks like this:
+The complete file structure looks like this:
 ```
 RiskThinking.AI
   Logs
@@ -66,15 +66,15 @@ RiskThinking.AI
     AB <-- errors of bin/spark-submit /Volumes/Mac/Code/RiskThinking.AI/Solution.py AB
     CD
     ..
-  Problem 1
+  Problem 1 (3.2G)
     A
     AA <-- an individual stock/etf
     ..
-  Problem 2
+  Problem 2 (3.4G)
     A
     AA <-- an individual stock/etf
     ..
-  Problem 3
+  Problem 3 (164G)
     A
     AA
       data.pkl <-- serialized trained model RandomForestRegressor
@@ -111,10 +111,10 @@ err.groupBy(err.Error).count().sort(err.Error).show(truncate=False)
 ![image](https://user-images.githubusercontent.com/124945757/236939926-c2760dfd-8b74-4276-9fa6-69787ebeca54.png)
 - Flask, which is a web application framework, was used to host the API
 - `/predict` accepted 3 parameters: __Symbol__, __vol_moving_avg__, __adj_close_rolling_med__
-- Folder /Problem 3/ uncompressed is 174 GB. Where I host the API it has disk space limit of 512 MB. Therefore I only serve 4: Apple (__AAPL__), IBM (__IBM__) Costco (__COST__) and Tesla (__TSLA__). I can manually add some mere spesific ones that may be of interest, if disk space permits
+- Folder /Problem 3/ uncompressed is 164G. Where I host the API it has disk space limit of 512 MB. Therefore I only serve 4: Apple (__AAPL__), IBM (__IBM__) Costco (__COST__) and Tesla (__TSLA__). I can manually add some more spesific ones that may be of interest, if disk space permits.
 # Limitations and Approach
 Due to limitations of personal computer, it did not seem possible to train `RandomForestRegressor()` on the entire dataset of more than 28 million rows. For example, training the model on only 30% of rows took about 22 minutes. Trying to serialize it caused a crush and left an incomplete serialized file of about 60 GB. In short: too small of a percentage of rows to train on; and too big of a resulting file when serialized.  
   
 Therefore I took the approach of training the model per Symbol and serializing many individual models in /Problem 3/.  
   
-Folder /Problem 3/ is 174 GB and takes 1 hour to zip, not enough room on Google Drive or API host to put on. Therefore, on the API host (512 MB limit) I only put 4: Costco, IBM, Tesla and Apple. On Google Drive I put the 4, plus a few more. I can add more to either, if some are of particular interest.
+Folder /Problem 3/ is 164G and takes 1 hour to zip, not enough room on Google Drive or API host to put on. Therefore, on the API host (512 MB limit) I only put 4: Costco, IBM, Tesla and Apple. On Google Drive I put the 4, plus a few more. I can add more to either, if some are of particular interest.
